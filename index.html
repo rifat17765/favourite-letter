@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Little Letter for You</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      background: linear-gradient(135deg, #ffe5ec, #f8c8dc, #fce4ec);
+      font-family: Georgia, serif;
+      color: #713449;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 27px;
+      font-weight: normal;
+    }
+
+    .heart {
+      border: none;
+      background: none;
+      color: #e63968;
+      font-size: 100px;
+      cursor: pointer;
+      animation: beat 1.2s infinite;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.13); }
+    }
+
+    .hint {
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+
+    .letter {
+      display: none;
+      margin-top: 24px;
+      padding: 28px 22px;
+      background: rgba(255, 255, 255, 0.82);
+      border-radius: 18px;
+      box-shadow: 0 10px 35px #a64d6a22;
+      line-height: 1.8;
+      text-align: left;
+      animation: appear 0.7s ease;
+    }
+
+    .letter h2 {
+      text-align: center;
+      font-weight: normal;
+    }
+
+    .letter p {
+      white-space: pre-line;
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 24px;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <h1>A little something for you...</h1>
+
+    <button class="heart" id="heart"
+      aria-label="Open the letter">♥</button>
+
+    <p class="hint" id="hint">Tap the heart</p>
+
+    <section class="letter" id="letter">
+      <h2>To Someone Special ♡</h2>
+
+      <p>
+There is something I have wanted to tell you.
+
+You make ordinary moments feel special,
+and your presence means more than words
+can easily explain.
+
+I just wanted you to know that you
+hold a special place in my heart.
+      </p>
+
+      <p class="signature">
+        With love,<br>
+        Someone who cares ♡
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const heart = document.getElementById("heart");
+    const letter = document.getElementById("letter");
+    const hint = document.getElementById("hint");
+
+    heart.addEventListener("click", function () {
+      letter.style.display = "block";
+      hint.textContent = "A little message, just for you ♡";
+      heart.textContent = "💗";
+      heart.style.animation = "none";
+      heart.disabled = true;
+      letter.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    });
+  </script>
+</body>
+</html>
